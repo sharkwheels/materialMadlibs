@@ -2,12 +2,12 @@
 /********************************
 Creation Computation: 2016
 
-Assignment one: GET THE FUCK AWAY FROM ME.
+Assignment one: Panic.
 
 1 button that sends a heartbeat out to serial.
 Processing reads it on the other side to manipulate audio.
 
-If the button is on, send a heartbeat to increase a value ever 500ms
+If the button is on, send a heartbeat to increase a value every 500ms
 Else, bring that value down in intervals over time until it is equal to 1. 
 
 **********************************/
@@ -22,8 +22,8 @@ unsigned long debounceDelay = 20;      // the debounce time; increase if the out
 
 int btnPin = 2;         // the button Pin
 int btnLed = 13;         // the button LED for testing
-int buttonState;          // always 0
-int lastButtonState;      // always 0
+int buttonState;          
+int lastButtonState;      
 
 elapsedMillis timer0;
 elapsedMillis timer1;
@@ -41,9 +41,6 @@ void setup(){
 
 void loop(){
 
-  //int y = map(v, 1, 9, 50, 1);
-  //Serial.println(y);
-
   int buttonReading = digitalRead(btnPin);
 
   if (buttonReading != lastButtonState) {
@@ -55,6 +52,7 @@ void loop(){
         /// BUTTON IS OFF /////////////////////
       digitalWrite(btnLed, LOW);
       timer0 = 0;
+      /// count back down to 1 ////////////
       if(wasGrabbed && v > 1){
         if(timer1 > interval){
           timer1 -= interval; //reset the timer
